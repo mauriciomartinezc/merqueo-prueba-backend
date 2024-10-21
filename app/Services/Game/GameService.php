@@ -22,7 +22,7 @@ class GameService
         $gamesByRound = collect();
 
         $index = 0;
-        for ($round = 1; $round <= $totalRounds; $round++) {
+        for ($round = 1; $round < $totalRounds; $round++) {
             // Dividir progresivamente para obtener la cantidad de partidos
             $matchesInRound = (int) ($teamsCount / (2 ** $round));
             if ($matchesInRound > 0) {
@@ -30,8 +30,6 @@ class GameService
                 $index += $matchesInRound;
             }
         }
-
-        $gamesByRound->pop();
 
         return $gamesByRound;
     }
